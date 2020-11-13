@@ -4,12 +4,14 @@ using namespace std;
 
 //Generic doubly linked list
 
-template <class T>
+//compiler will first look for the use of class. If there is a use it will be kept otherwise it will be discarded
+
+template <class T> // can't declare same variable twice
 class DoublyLinkedList
 {
 private:
 
-template <class U>
+template <class U>  // can't declare same variable twice like class T...you either use it or declare a new one
     class Node
     {
     public:
@@ -28,7 +30,7 @@ template <class U>
 
     };
     int size = 0;
-    Node<T>* head = NULL;
+    Node<T>* head = NULL; //since there is a use of Node class U will be replaced with the type provided in DoublyLinkedList<type>
     Node<T>* tail = NULL;
 
 
@@ -144,74 +146,73 @@ public:
 
     T removeFirst()
     {
-        // Can't remove data from an empty list
+
         if (isEmpty())
             throw "Empty list";
 
-        // Extract the data at the head and move
-        // the head pointer forwards one node
+
         T data = head->data;
         head = head->next;
         --size;
 
-        // If the list is empty set the tail to null
-        if (isEmpty())
+
+        if (isEmpty())  //since head already assigned to null and list is empty , its time to assign tail to null
         {
             delete tail;
             tail = NULL;
         }
 
-        // Do a memory cleanup of the previous node
+        // memory cleanup of the previous node
         else
         {
             delete head->prev;
             head->prev = NULL;
         }
 
-        // Return the data that was at the first node we just removed
+
         return data;
     }
 
     T removeLast()
     {
-        // Can't remove data from an empty list
+
         if (isEmpty())
             throw "Empty list";
 
-        // Extract the data at the tail and move
-        // the tail pointer backwards one node
+        //  tail pointer backwards one node
         T data = tail->data;
         tail = tail->prev;
         --size;
 
-        // If the list is now empty set the head to null
+
         if (isEmpty())
         {
             delete head;
             head = NULL;
         }
 
-        // Do a memory clean of the node that was just removed
+        //  memory clean of the node that was just removed
         else
         {
             delete tail->next;
             tail->next = NULL;
         }
 
-        // Return the data that was in the last node we just removed
+
         return data;
     }
 
     T remove(Node<T>* node)
     {
         // If the node to remove is somewhere either at the
-        // head or the tail handle those independently
+        // head or the tail handle those independently  (node provided here has already being searched and found and sent here just to remove
+                                                         //and since its doubly linked list we have both prev and next info
         if (node->prev == NULL)
             return removeFirst();
         if (node->next == NULL)
             return removeLast();
 
-        // Make the pointers of adjacent nodes skip over 'node'
+        // Make the pointers of adjacent nodes skip over node
         node->next->prev = node->prev;
         node->prev->next = node->next;
 
@@ -224,7 +225,7 @@ public:
 
         --size;
 
-        // Return the data in the node we just removed
+
         return data;
     }
 

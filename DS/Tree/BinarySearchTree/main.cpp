@@ -188,7 +188,7 @@ public:
 
 
     public:
-        int height()
+        int height()   // number of edges in longest path from the node to a leaf node , height of tree = height of root
         {
             int heightOfBst =  height(root);
             if(heightOfBst > 0)

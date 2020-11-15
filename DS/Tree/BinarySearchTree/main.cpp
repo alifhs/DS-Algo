@@ -190,7 +190,11 @@ public:
     public:
         int height()
         {
-            return height(root);
+            int heightOfBst =  height(root);
+            if(heightOfBst > 0)
+                return heightOfBst - 1;
+            else
+                heightOfBst;
         }
 
 

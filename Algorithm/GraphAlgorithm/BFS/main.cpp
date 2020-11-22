@@ -3,6 +3,7 @@
 #include <iostream>
 #include <vector>
 #include <queue>
+#include <climits>
 
 
 using namespace std;
@@ -34,7 +35,7 @@ void bfs(vector<vector<int>>&v, int s, int nodeToFind)
     q.push(s);
     vector<int>prev;
     visited[s] = true;
-    cout << "here ";
+    
 
     for(int i=0; i<nodes; i++)
         prev.push_back(INT_MIN);
@@ -86,14 +87,14 @@ int main()
         v[x].push_back(y);
         v[y].push_back(x);
     }
-    cout << "enter source node & targetNode\n";
-    int s, t;
+    cout << "enter source node & destinationNode\n";
+    int s, d;
 
-    cin >> s >> t;
+    cin >> s >> d;
 //   cout << s << " value of s";
 
 
-    bfs( v, s, t);
+    bfs( v, s, d);
 
 //Input data for testing
 

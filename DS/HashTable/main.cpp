@@ -27,7 +27,7 @@ Dictionary** dArray = new Dictionary*[10];
 int hashFunction(string key)
 {
     int sumOfStrAscii = 0;
-    for(int i = 0; i < key.length(); i++)  //add all the ascii values of the string
+    for(size_t i = 0; i < key.length(); i++)  //add all the ascii values of the string
     {
         int startAscii = 64;
         if(key[i] > 90)
@@ -125,7 +125,7 @@ int main()
     {
         storeKeyValue(keys[i], values[i]);
     }
-    string word;
+
 
     cout << "Enter Keys Door, Search, Next, track, camp, boring, digging Car, thought, open \n";
 

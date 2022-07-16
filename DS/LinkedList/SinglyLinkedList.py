@@ -14,7 +14,7 @@ class LinkedList:
         self.numOfNodes = 0
     
     def insert_start(self, data):
-        self.numOfNodes = self.numOfNodes + 1
+        self.numOfNodes += 1
         new_node = Node(data)
         if not self.head:
             self.head = new_node
@@ -49,13 +49,16 @@ class LinkedList:
         if previous_node is None and current_node.nextNode is None:
             found_node = self.head
             self.head = None
+            self.numOfNodes -= 1
             return found_node.data
+            
         elif previous_node is None and current_node.nextNode is not None:
             self.head = current_node.nextNode
+            self.numOfNodes -= 1
             return current_node.data
         else:
             previous_node.nextNode = current_node.nextNode
-            
+            self.numOfNodes -= 1
             return current_node.data
             
         
@@ -81,8 +84,12 @@ if __name__ == "__main__":
     linked_list.insert_end(6)
     linked_list.insert_end(7)
     linked_list.traverse()
+    size = linked_list.size_of_list()
+    print('size of list is: ' + str(size))
     linked_list.remove_node(6)
     print('after removing 6')
+    size = linked_list.size_of_list()
+    print('size of list is: ' + str(size))
     linked_list.traverse()
     linked_list.remove_node(2)
     print('after removing 2')
@@ -90,6 +97,8 @@ if __name__ == "__main__":
     linked_list.remove_node(7)
     print('after removing 7')
     linked_list.traverse()
+    size = linked_list.size_of_list()
+    print('size of list is: ' + str(size))
     data = linked_list.remove_node(8)
     if(not data):
         print('data not found')
@@ -98,6 +107,8 @@ if __name__ == "__main__":
         print('data found')
         print('after removing 8')
         linked_list.traverse()
+    size = linked_list.size_of_list()
+    print('size of list is: ' + str(size))
     
 
 

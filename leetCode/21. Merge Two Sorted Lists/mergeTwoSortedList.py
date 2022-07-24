@@ -8,7 +8,7 @@
 #         self.next = next
 class Solution:
     
-    def mergeTwoLists(self, list1: ListNode, list2: ListNode) -> ListNode:
+    def mergeTwoLists(self, list1, list2):
         if list1 is None:
             return list2
         elif list2 is None:
@@ -25,9 +25,6 @@ class Solution:
         currentNodeList1 = head1List1
         currentNodeList2 = head2List2
         
-        # print('list1', currentNodeList1.val)
-        # print('list2', currentNodeList2.val)
-        # i = 0
         while currentNodeList1 is not None:
             
             while currentNodeList2 and \
@@ -35,12 +32,6 @@ class Solution:
                     and(( currentNodeList1.next and \
                         ( currentNodeList2.val <= currentNodeList1.next.val))) or \
                             currentNodeList1.next is None):
-                # print('list1', currentNodeList1.val)
-                # print('list2', currentNodeList2.val)
-
-                # if(i == 5):
-                #     return
-                # i += 1
                 
                 prevNextCurrentNodeList1 = currentNodeList1.next
                 prevNextCurrentNodeList2 = currentNodeList2.next
@@ -49,14 +40,6 @@ class Solution:
                 currentNodeList1.next = prevNextCurrentNodeList1
                 currentNodeList2 = prevNextCurrentNodeList2
                 
-                
-                # print('after update---------')
-                # print('list1', currentNodeList1.val)
-                # print('list2', currentNodeList2.val)
-                # currentNodeList1.next.next = current1Temp.next
-                
-            
-            
             currentNodeList1 = currentNodeList1.next
         
         return head1List1

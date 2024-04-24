@@ -16,4 +16,3 @@ class Solution:
         for i in range(0, numsLen):
             shiftedIndex = (i+k) % numsLen
             nums[shiftedIndex] = clonedNums[i]
-        

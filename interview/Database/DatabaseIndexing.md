@@ -1,3 +1,20 @@
+### How to create an index ?
+
+Run the below command to create an index on a column
+
+
+```
+create index customers_company_name on customers(company_name);
+```
+
+### Check how much time it takes to query
+
+```
+explain analyze select contact_name from customers where company_name='Alfreds Futterkiste';
+```
+
+
+
 ### 1. Improved Query Performance
 
 - **Faster Data Retrieval**: Indexes are designed to speed up the retrieval of data. When a query searches for records based on an indexed column, the database can quickly locate the data using the index, rather than scanning every row in the table.

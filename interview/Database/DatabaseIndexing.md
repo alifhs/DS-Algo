@@ -25,6 +25,10 @@ explain analyze select contact_name from customers where company_name='Alfreds F
 - **B-tree Indexes**: The default index type in PostgreSQL and many other databases. It's well-suited for a wide variety of queries, including equality and range queries.
 - **Hash Indexes**: Used for equality comparisons. However, their use is limited compared to B-tree indexes.
 
+- **Clustered Indexes**: A clustered index is an index which defines the physical order in which table records are stored in a database ie. collocated with the data in the same table space or same disk file.
+- - **pros:**  In case of range queries, it’s quite possible that the collocated data is buffered in memory. `WHERE phone_no > '9010000000' AND phone_no < '9020000000'`
+- - **Limitations**: Since a clustered index impacts the physical organization of the data, there can be only one clustered index per table.
+
 ### 3. Storage and Maintenance Overhead
 
 - **Additional Storage**: Indexes require additional storage space. The size depends on the number of columns indexed, the data type of these columns, and the number of rows in the table.

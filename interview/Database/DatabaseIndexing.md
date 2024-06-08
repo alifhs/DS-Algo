@@ -13,7 +13,7 @@ create index customers_company_name on customers(company_name);
 explain analyze select contact_name from customers where company_name='Alfreds Futterkiste';
 ```
 
-## PRO and CONS:
+## PROS and CONS:
 
 ### 1. Improved Query Performance
 
